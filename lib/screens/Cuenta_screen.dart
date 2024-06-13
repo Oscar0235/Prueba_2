@@ -15,6 +15,7 @@ class MiAplicacion extends StatelessWidget {
         '/cuenta': (context) => AccountScreen(),
         '/transacciones': (context) => TransactionHistoryScreen(),
       },
+      home: AccountScreen(),
     );
   }
 }
@@ -63,6 +64,27 @@ class AccountScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance),
+            label: 'Cuenta',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Historial',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.blue,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/cuenta');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/transacciones');
+          }
+        },
+      ),
     );
   }
 }
@@ -93,6 +115,27 @@ class TransactionHistoryScreen extends StatelessWidget {
               ),
             ),
           );
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance),
+            label: 'Cuenta',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Historial',
+          ),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Colors.blue,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/cuenta');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/transacciones');
+          }
         },
       ),
     );
